@@ -1,5 +1,6 @@
 .DS_Store
 /.vscode
+/USACO/.vscode
 # execute file
 main
 # Prerequisites
