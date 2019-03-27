@@ -62,9 +62,9 @@ int main() {
             }
         }
     }
-    // cout << ans << endl;
+    
     cout << (int)ans << endl;
-    // cout << sqrt(42500) << endl;
+    
         
     return 0;
 }
