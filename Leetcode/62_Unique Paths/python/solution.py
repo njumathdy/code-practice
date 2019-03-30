@@ -6,4 +6,4 @@ class Solution:
             for j in range(1, n):
                 cur[j] += cur[j-1]
 
-        return cur[j-1]
+        return cur[n-1]
