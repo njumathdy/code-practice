@@ -6,6 +6,7 @@
 
 using namespace std;
 
+// 思路：找到最大的三个数和最小的两个数，最大乘积只可能是最大三个数之积或者最小两个数和最大的数之积。
 int main() {
     int n, num;
     long long max_mul;
@@ -44,6 +45,6 @@ int main() {
     }
     max_mul = max1*max2*max3 > max1*min1*min2 ? max1*max2*max3 : max1*min1*min2;
     cout << max_mul << endl;
-    
+
     return 0;
 }
