@@ -16,8 +16,8 @@ const int maxn = 100 + 5;
 int m, n;
 vector<vector<int> > matrix(maxn, vector<int>(maxn, 0));
 vector<vector<int> > dp(maxn, vector<int>(maxn, 0));
-vector<int> x = {-1, 1, 0, 0};
-vector<int> y = {0, 0, 1, -1};
+vector<int> dx = {-1, 1, 0, 0};
+vector<int> dy = {0, 0, 1, -1};
 
 int dfs(int i, int j) {
     int& ans = dp[i][j];
@@ -25,8 +25,8 @@ int dfs(int i, int j) {
         return ans;
     ans = 1;
     for(int k = 0; k < 4; k++) {
-        int x = i + x[k];
-        int y = j + y[k];
+        int x = i + dx[k];
+        int y = j + dy[k];
         if(x < 0 || x > m-1 || y < 0 || y > n-1)
             continue;
         if(matrix[x][y] < matrix[i][j])
@@ -38,14 +38,15 @@ int dfs(int i, int j) {
 int main() {
     cin >> m >> n;
     for(int i = 0; i < m; i++) 
-        for(int j = 0; i < n; i++)
+        for(int j = 0; j < n; j++)
             cin >> matrix[i][j];
 
     int maxd = 0;
+    
     for(int i = 0; i < m; i++)
         for(int j = 0; j < n; j++)
             maxd = max(maxd, dfs(i,j));
-    cout << maxd << endl;
 
+    cout << maxd << endl;
     return 0;
 }
