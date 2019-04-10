@@ -1,8 +1,5 @@
 /*****************
- * 暴力搜索有效，但是很慢。
- * 高效的方法是利用Hashset的高效查询，具体技巧是sliding window:
- * A window is a range of elements in the array/string which usually defined by the start and end indices.
- * A sliding window is a window "slides" its two boundaries to the certain direction.
+Given a string, find the length of the longest substring without repeating characters.
 *****************/
 
 #include <iostream>
@@ -17,6 +14,10 @@
 
 using namespace std;
 
+// 暴力搜索有效，但是很慢。
+// 高效的方法是利用Hashset的高效查询，具体技巧是sliding window:
+// A window is a range of elements in the array/string which usually defined by the start and end indices.
+// A sliding window is a window "slides" its two boundaries to the certain direction.
 class Solution {
 public:
     bool isIn(string s, char c) {
@@ -59,6 +60,5 @@ public:
 };
 
 int main() {
-    
     return 0;
 }
