@@ -16,7 +16,7 @@ The matching should cover the entire input string (not partial).
 using namespace std;
 
 // dp: dp[i][j]表示s[0,i)和p[0,j)是否匹配
-// dp[i][j] = dp[i-1]dp[j-1] && s[i-1] == p[j-1], if p[j-1] != '*';
+// dp[i][j] = dp[i-1]dp[j-1] && s[i-1] == p[j-1] || p[j-1] == '.', if p[j-1] != '*';
 // dp[i][j] = dp[i][j-2], if p[j-1] == '*'且重复0次
 // dp[i][j] = dp[i - 1][j] && (s[i - 1] == p[j - 2] || p[j - 2] == '.'), if p[j-1] == '*'并且至少重复一次
 
@@ -50,6 +50,7 @@ public:
         vector<bool> cur(n + 1, false);
         for (int i = 0; i <= m; i++) {
             bool pre = cur[0];
+            // cur[0]表示空字符串和s[0, i)是否匹配
             cur[0] = !i;
             for (int j = 1; j <= n; j++) {
                 bool temp = cur[j];
