@@ -116,5 +116,13 @@ public:
 };
 
 int main() {
+    bool a = NULL;
+    if(a)
+        cout << "true" << endl;
+    else
+    {
+        cout << "false" << endl;
+    }
+    
     return 0;
 }

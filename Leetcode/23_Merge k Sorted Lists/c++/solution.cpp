@@ -7,6 +7,7 @@ Merge k sorted linked lists and return it as one sorted list. Analyze and descri
 #include <vector>
 #include <algorithm>
 #include <queue>
+#include <iostream>
 
 using namespace std;
 
@@ -21,12 +22,12 @@ class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
         auto comp = [](const ListNode* a, const ListNode* b) -> bool { return a->val > b->val; };
-        priority_queue<ListNode*, vector<ListNode*>, decltype(comp)> pq(comp);
+        priority_queue<ListNode*, vector<ListNode*>, decltype(comp)>  pq(comp);
         
         for(auto l:lists) {
             if(l) pq.push(l);
         }
-        if(pq.empty()) return NULL;
+        if(pq.empty()) return nullptr;
         
         ListNode* head = pq.top();
         pq.pop();
