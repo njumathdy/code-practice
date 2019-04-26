@@ -12,7 +12,6 @@ generate all structurally unique BST's (binary search trees) that store values 1
 
 using namespace std;
 
-
 // Definition for a binary tree node.
 struct TreeNode {
     int val;
@@ -32,7 +31,6 @@ public:
     
     vector<TreeNode*> generateTree(int from, int to) {
         vector<TreeNode*> ret;
-        if(to - from < 0) ret.push_back(0);
         if(to - from == 0) ret.push_back(new TreeNode(from));
         if(to - from > 0) {
             for(int i=from; i<=to; i++) {
