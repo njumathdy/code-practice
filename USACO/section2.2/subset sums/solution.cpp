@@ -42,7 +42,7 @@ int main() {
     f[0][0] = 1;
     for(int i = 1; i <= N; i++) {
         for(int j = 0; j <= i*(i+1)/2; j++) {
-            f[i][j] = ((j-i >= 0) ? f[i-1][j]+f[i-1][j-i] : f[i-1][j]);
+            f[i][j] = (j-i >= 0) ? f[i-1][j]+f[i-1][j-i] : f[i-1][j];
         }
     }
     fout << f[N][N*(N+1)/4] / 2 << endl;

@@ -3,6 +3,8 @@
 /USACO/.vscode
 # execute file
 main
+*.in
+*.out
 # Prerequisites
 *.d
 
