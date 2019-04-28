@@ -1,6 +1,7 @@
 .DS_Store
 /.vscode
 /USACO/.vscode
+*.txt
 # execute file
 main
 *.in
