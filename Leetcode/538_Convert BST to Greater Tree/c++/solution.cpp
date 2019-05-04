@@ -8,6 +8,7 @@ Given a Binary Search Tree (BST), convert it to a Greater Tree such that every k
 #include <algorithm>
 #include <string>
 #include <iostream>
+#include <stack>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution {
+class Solution1 {
 public:
     int sum = 0;
     
@@ -30,6 +31,31 @@ public:
         sum += root -> val;
         root -> val = sum;
         convertBST(root -> left);
+        
+        return root;
+    }    
+};
+
+class Solution {
+public:
+    TreeNode* convertBST(TreeNode* root) {
+        int sum = 0;
+        TreeNode* node = root;
+        stack<TreeNode*> s;
+        
+        while(!s.empty() || node != nullptr) {
+            while(node != nullptr) {
+                s.push(node);
+                node = node -> right;
+            }
+            
+            node = s.top();
+            s.pop();
+            sum += node -> val;
+            node -> val = sum;
+            
+            node = node -> left;
+        }
         
         return root;
     }    

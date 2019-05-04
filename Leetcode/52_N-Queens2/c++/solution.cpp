@@ -43,6 +43,7 @@ public:
                 return false;
         }
         
+        // 检查对角线
         i = row - 1, j = col - 1;
         while(i >= 0 && j >= 0) {
             if(temp[i][j] == 'Q')
@@ -51,6 +52,7 @@ public:
             j--;
         }
         
+        // 检查另外一条对角线
         i = row - 1, j = col + 1;
         while(i >= 0 && j < n) {
             if(temp[i][j] == 'Q')
