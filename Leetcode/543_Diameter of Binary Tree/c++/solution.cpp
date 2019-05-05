@@ -20,7 +20,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution {
+class Solution1 {
 public:
     int diameterOfBinaryTree(TreeNode* root) {
         if(root == nullptr)
