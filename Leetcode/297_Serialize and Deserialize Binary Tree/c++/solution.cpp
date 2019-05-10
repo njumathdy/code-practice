@@ -14,7 +14,7 @@ Design an algorithm to serialize and deserialize a binary tree. There is no rest
 
 using namespace std;
 
- struct TreeNode {
+struct TreeNode {
     int val;
     TreeNode *left;
     TreeNode *right;

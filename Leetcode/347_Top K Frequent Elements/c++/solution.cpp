@@ -61,5 +61,7 @@ public:
 };
 
 int main() {
+    int x = 2;
+    cout << (x & (-x)) << endl;
     return 0;
 }
