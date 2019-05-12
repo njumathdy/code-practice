@@ -47,7 +47,7 @@ public:
                         if (dict.find(word) != dict.end()) {
                             todo.push(word);
                         }
-                     }
+                    }
                     word[j] = c;
                 }
             }
