@@ -1,4 +1,6 @@
 /*******************
+n个小朋友拍成一圈，每个小朋友有一个分数，给这些小朋友分配糖果，每个至少一个，若其分数比旁边的人高，
+则其糖果必须要多于旁边的人，问最少需要多少糖果。
 *******************/
 #include <cstdlib>
 #include <cstdio>
@@ -62,7 +64,7 @@ int main() {
             cin >> t;
             v.push_back(0);
             scores.push_back(t);
-            a.push_back(make_pair(t, i));
+            a.push_back(make_pair(t, j));
         }
         sort(a.begin(), a.end()); // 排序，每次考察最小的分数的位置分配的奖品个数
         for(int j = 1; j < n; j++) {
