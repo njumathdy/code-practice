@@ -73,8 +73,6 @@ string getPostfixExpression(string str)
     return res;  
 }  
   
-   
-  
 int calculator(string str)  
 {  
     //计算后缀表达式的值，默认中缀表达式所有数字都是一位的，在0-9之间  
@@ -107,7 +105,6 @@ int calculator(string str)
     }  
     return mystack.top();  
 }  
-  
    
 int main()  
 {  
