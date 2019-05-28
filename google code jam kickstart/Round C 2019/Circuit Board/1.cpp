@@ -37,7 +37,7 @@ int main() {
 		for (int i = 0; i < W; ++i) {
 			for (int j = i; j < W; ++j) {
 				int cont = 0;
-				// 行
+				// 遍历行
 				for (int k = 0; k < H; ++k) {
 					if (ok[k][i][j]) ++cont;
 					else cont = 0;

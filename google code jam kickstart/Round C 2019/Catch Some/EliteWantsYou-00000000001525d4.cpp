@@ -1,4 +1,9 @@
 #include <bits/stdc++.h>
+//#pragma GCC optimize("Ofast")
+//#pragma GCC optimize("unroll-loops")
+
+#define fi first
+#define se second
 
 const int N = 1010;
 const int Q = 100100;
