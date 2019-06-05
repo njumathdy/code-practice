@@ -23,6 +23,7 @@ class MedianFinder {
 public:
     MedianFinder() {}
 
+    // small.size() == large.size() || small.size() = large.size() + 1
     void addNum(int num) {
         small.push(num);
         large.push(-small.top());
