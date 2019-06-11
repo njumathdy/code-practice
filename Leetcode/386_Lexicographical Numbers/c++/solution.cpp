@@ -15,7 +15,7 @@ Please optimize your algorithm to use less time and space. The input size may be
 
 using namespace std;
 
-class Solution {
+class Solution1 {
 public:
     static bool compare(int n1, int n2) {
         return to_string(n1) < to_string(n2);
