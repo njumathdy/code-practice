@@ -1,16 +1,12 @@
 /*******************
-*Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
-
+Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
 The same repeated number may be chosen from candidates unlimited number of times.
 *******************/
-#include <cstdlib>
-#include <cstdio>
-#include <exception>
 #include <vector>
 
 using namespace std;
 
-// 回宿法的思想
+// 回溯法的思想
 class Solution {
 public:
     vector<vector<int> > combinationSum(vector<int>& candidates, int target) {
@@ -24,11 +20,12 @@ public:
         
         return ans;   
     }
-    
+
+private:   
     void combinationSum(vector<int>& candidates, int target, vector<vector<int> >& ans, vector<int>& temp, int start) {
         for(int i = start; i < candidates.size(); ++i){
             temp.push_back(candidates[i]);
-            target = target- candidates[i];
+            target = target - candidates[i];
             if(target == 0){//条件满足
                 ans.push_back(temp);
             }
