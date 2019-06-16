@@ -23,7 +23,6 @@ struct TreeNode {
 // recursive
 class Solution1 {
 public:
-    TreeNode* ans = nullptr;
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         recursive(root, p, q);
         return ans;
@@ -42,6 +41,8 @@ public:
         
         return (mid + left + right > 0);     
     }
+private: 
+    TreeNode* ans = nullptr;
 };
 
 class Solution2 {
@@ -55,6 +56,58 @@ public:
             return root;
         
 		return left ? left : right;
+	}
+};
+
+
+class Solution3 {
+public:
+    bool getNodePath(TreeNode* root, TreeNode* node, vector<TreeNode*>& path) {
+        if(node == root) {
+            path.push_back(node);
+            return true;
+        }
+            
+        if(root == nullptr)
+            return false;
+        
+        path.push_back(root);
+        
+        bool found = false;
+        
+        found = getNodePath(root->left, node, path) ? true : getNodePath(root->right, node, path);
+        
+        if(!found)
+            path.pop_back();
+        
+        return found;
+    }
+    
+    TreeNode* getLastCommonNode(vector<TreeNode*>& path1, vector<TreeNode*>& path2) {
+        auto iter1 = path1.begin();
+        auto iter2 = path2.begin();
+        
+        TreeNode* res = nullptr;
+        while(iter1 != path1.end() && iter2 != path2.end()) {
+            if(*iter1 == *iter2)
+                res = *iter1;
+            
+            iter1++;
+            iter2++;
+        }
+        
+        return res;
+    }
+    
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+		if(root == nullptr || p == nullptr || q == nullptr)
+            return nullptr;
+        
+        vector<TreeNode*> path1, path2;
+        getNodePath(root, p, path1);
+        getNodePath(root, q, path2);
+        
+        return getLastCommonNode(path1, path2);       
 	}
 };
 
