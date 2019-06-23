@@ -39,18 +39,21 @@ public:
     }
 };
 
-// based on union-find
-class Solution2 {
+class Solution {
 public:
     int find(int x) {
+        // true: 根节点, false: 递归寻找根节点
         return x == f[x] ? x : f[x] = find(f[x]);
     }
     
     int minIncrementForUnique(vector<int>& A) {
         int n = A.size(), ans = 0;
+        
+        // 初始化，每个位置为单独的一个集合
         for(int i = 0; i < 80010; i++)
             f[i] = i;
         
+        // 累加答案后将x与x+1所在集合合并，根节点为x+1所在集合的根节点
         for(int i = 0; i < n; i++) {
             int x = find(A[i]);
             ans += x - A[i];
@@ -58,8 +61,7 @@ public:
         }
         
         return ans;
-    }
-    
+    }   
 private:
     vector<int> f = vector<int>(80010, 0);
 };
