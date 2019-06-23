@@ -14,7 +14,7 @@ You need to return the least number of intervals the CPU will take to finish all
 
 using namespace std;
 
-class Solution {
+class Solution1 {
 public:
     int leastInterval(vector<char>& tasks, int n) {
         vector<int> nums(26, 0);
@@ -37,6 +37,31 @@ public:
         }
         return time;
     }
+};
+
+// based on union-find
+class Solution2 {
+public:
+    int find(int x) {
+        return x == f[x] ? x : f[x] = find(f[x]);
+    }
+    
+    int minIncrementForUnique(vector<int>& A) {
+        int n = A.size(), ans = 0;
+        for(int i = 0; i < 80010; i++)
+            f[i] = i;
+        
+        for(int i = 0; i < n; i++) {
+            int x = find(A[i]);
+            ans += x - A[i];
+            f[x] = x + 1;
+        }
+        
+        return ans;
+    }
+    
+private:
+    vector<int> f = vector<int>(80010, 0);
 };
 
 int main() {
