@@ -2,6 +2,7 @@
 /.vscode
 /USACO/.vscode
 *.txt
+*.db
 # execute file
 main
 *.in
