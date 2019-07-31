@@ -52,6 +52,7 @@ public:
     }
 };
 
+// dp
 class Solution2 {
 public: 
     int splitArray(vector<int>& nums, int m) {
