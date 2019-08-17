@@ -48,7 +48,7 @@ public:
         int left = 0, len = 0; 
         map<char, int> dict; //hashset, 快速查询，在此题中，还可以换成数组，使得查询速度更快
         //遍历字符串
-        for (int right=0; right<s.size(); right++) {
+        for (int right=0; right < s.size(); right++) {
             //s[right]在dict中
             if (dict.find(s[right]) != dict.end()) {
                 left = max(left, dict[s[right]] + 1);//将最左边移动到该字符后边一个位置，因为此时[i, j)的其余i均不可能对应最大长度
