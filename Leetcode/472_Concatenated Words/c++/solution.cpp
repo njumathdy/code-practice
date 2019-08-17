@@ -101,6 +101,61 @@ public:
     }
 };
 
+class Solution3 {
+    struct Trie {
+        int nxt[26];
+        bool end;
+        Trie() {end = false; memset(nxt, 0, sizeof(nxt));}
+    } ;
+    vector<Trie> tree;
+    
+    void insert(string& s) {
+        int u = 0;
+        for (char ch : s) {
+            int x = ch - 'a';
+            if (tree[u].nxt[x] == 0) {
+                tree[u].nxt[x] = tree.size();
+                tree.push_back(Trie());
+            }
+            u = tree[u].nxt[x];
+        }
+        tree[u].end = true;
+    }
+    
+public:
+    vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
+        tree.reserve(10000);
+        tree.push_back(Trie());
+        for (string& s : words) {
+            if (s.length() > 0) {
+                insert(s);
+            }
+        }
+        vector<string> ans;
+        for (string& s : words) {
+            if (solve(s, 0, 0, 0)) {
+                ans.push_back(s);
+            }
+        }
+        return ans;
+    }
+    
+    bool solve(string& s, int u, int pos, int cnt) {
+        if (pos == s.length()) {
+            return cnt > 1;
+        }
+        for (int i = pos; i < s.length(); ++i) {
+            int v = tree[u].nxt[s[i] - 'a'];
+            if (v == 0) break;
+            u = v;
+            if (tree[u].end && solve(s, 0, i + 1, cnt + 1)) {
+                return true;
+            }
+        }
+        return false;
+    } 
+};
+
 int main() {
     return 0;
 }
