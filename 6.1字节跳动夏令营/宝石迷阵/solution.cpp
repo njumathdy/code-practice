@@ -23,7 +23,7 @@ void add( int a, int b, int c )
     h[ a ] = idx ++;
 }
 
-unordered_map< ULL, int > dfs( int u,int father )
+unordered_map< ULL, int > dfs( int u, int father )
 {
     unordered_map< ULL, int > heap;
     heap[ 0 ] = val[ u ];
