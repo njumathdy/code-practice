@@ -8,6 +8,7 @@ Given a Binary Search Tree and a target number, return true if there exist two e
 #include <algorithm>
 #include <string>
 #include <iostream>
+#include <set>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution {
+class Solution1 {
 public:
     bool findTarget(TreeNode* root, int k) {
         if(root == nullptr)
@@ -47,6 +48,26 @@ public:
         inorder(root -> left, nums);
         nums.push_back(root -> val);
         inorder(root -> right, nums);
+    }
+};
+
+class Solution2 {
+public:
+    bool findTarget(TreeNode* root, int k) {
+        set<int> s;
+        return find(root, k, s);
+    }
+    
+    bool find(TreeNode* root, int k, set<int>& s) {
+        if(root == nullptr)
+            return false;
+        
+        if(s.find(k - root -> val) != s.end())
+            return true;
+        
+        s.insert(root -> val);
+        
+        return find(root -> left, k, s) || find(root -> right, k, s);
     }
 };
 
