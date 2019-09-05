@@ -24,7 +24,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution {
+class Solution1 {
 public:
     TreeNode* sortedListToBST(ListNode* head) {
         if(head == nullptr)
@@ -51,6 +51,26 @@ public:
         root = new TreeNode(nums[mid]);
         helper(root->left, nums, s, mid - 1);
         helper(root->right, nums, mid + 1, e);
+    }
+};
+
+class Solution2 {
+public:
+    TreeNode* sortedListToBST(ListNode* head) {
+        if(head == NULL) return NULL;
+        ListNode *slow = head, *fast = head, *prev = NULL;
+        while(fast && fast->next) {
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        TreeNode* root = new TreeNode(slow->val);
+        if(prev == NULL) return root;
+        fast = slow->next;
+        prev->next = slow->next = NULL;
+        root->left = sortedListToBST(head);
+        root->right = sortedListToBST(fast);
+        return root;
     }
 };
 

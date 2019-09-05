@@ -35,9 +35,9 @@ public:
                         ans.push_back({nums[i], nums[j], nums[start], nums[end]});
                         start++;
                         end--;
-                        while(nums[start] == nums[start-1] && start < end)
+                        while(start < end && nums[start] == nums[start-1])
                             start++;
-                        while(nums[end] == nums[end+1] && start < end)
+                        while(start < end && nums[end] == nums[end+1])
                             end--;
                     } else if(nums[start] + nums[end] + nums[j] > target - nums[i]) {
                         end--;
@@ -67,7 +67,7 @@ class Solution2 {
 private:
     const int K = 4;
     int size = 0;
-    void search(vector<int>& nums, int pos, int k, int target, vector<int>& v, vector<vector<int>>& vv)
+    void search(vector<int>& nums, int pos, int k, int target, vector<int>& v, vector<vector<int> >& vv)
     {
         if(k == 2)
         {
@@ -77,8 +77,7 @@ private:
                 int t = nums[l]+nums[r];
                 if(t > target) r--;
                 else if(t < target) l++;
-                else 
-                {
+                else {
                     v[K-2] = nums[l++];
                     v[K-1] = nums[r--];
                     vv.push_back(v);
@@ -92,6 +91,7 @@ private:
             for(int top = size-k; pos <= top; ++pos)
             {
                 int sum = 0;
+                // 预先判断，提前剪枝
                 for(int i = 0; i < k; i++) sum += nums[pos+i]; 
                 // 最小值大于目标
                 if(sum > target) break; //avoid futile searching;
@@ -99,6 +99,7 @@ private:
                 // 最大值小于目标
                 for(int i = 0; i < k-1; ++i) sum += nums[size-1-i];
                 if(sum < target) continue; //avoid futile(无用的) searching;
+
                 v[K-k] = nums[pos];
                 search(nums, pos+1, k-1, target-nums[pos], v, vv);
                 while(pos<=top && nums[pos+1]==nums[pos]) pos++; //avoid duplicates;
